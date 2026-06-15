@@ -5,13 +5,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const message = form.querySelector("[data-form-message]");
     const submitButton = form.querySelector('button[type="submit"]');
 
+    if (submitButton && !submitButton.dataset.defaultText) {
+      submitButton.dataset.defaultText = submitButton.textContent;
+    }
+
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
 
-      const endpoint = form.getAttribute("data-endpoint");
+      const endpoint = form.dataset.endpoint || form.getAttribute("action");
 
       if (!endpoint) {
-        showMessage(message, "Form endpoint is missing. Please add data-endpoint to the form.", "error");
+        showMessage(
+          message,
+          "Form endpoint is missing. Please add an action or data-endpoint to the form.",
+          "error"
+        );
         return;
       }
 
@@ -47,13 +55,15 @@ document.addEventListener("DOMContentLoaded", () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Accept": "application/json"
+            Accept: "application/json"
           },
           body: JSON.stringify(data)
         });
 
+        const responseText = await response.text();
+
         if (!response.ok) {
-          throw new Error("Form submission failed.");
+          throw new Error(responseText || "Form submission failed.");
         }
 
         form.reset();
@@ -64,15 +74,18 @@ document.addEventListener("DOMContentLoaded", () => {
           "success"
         );
       } catch (error) {
+        console.error("FormSubmit error:", error);
+
         showMessage(
           message,
-          "Sorry, something went wrong. Please call 671 922 8508 or email copacificdistributors.gu@yahoo.com.",
+          "Sorry, the form could not be sent. Please call 671 922 8508 or email copacificdistributors.gu@yahoo.com.",
           "error"
         );
       } finally {
         if (submitButton) {
           submitButton.disabled = false;
-          submitButton.textContent = "Submit Request";
+          submitButton.textContent =
+            submitButton.dataset.defaultText || "Submit Request";
         }
       }
     });
@@ -85,16 +98,8 @@ document.addEventListener("DOMContentLoaded", () => {
     element.classList.add("is-visible");
     element.classList.remove("is-success", "is-error", "is-loading");
 
-    if (type === "success") {
-      element.classList.add("is-success");
-    }
-
-    if (type === "error") {
-      element.classList.add("is-error");
-    }
-
-    if (type === "loading") {
-      element.classList.add("is-loading");
-    }
+    if (type === "success") element.classList.add("is-success");
+    if (type === "error") element.classList.add("is-error");
+    if (type === "loading") element.classList.add("is-loading");
   }
 });

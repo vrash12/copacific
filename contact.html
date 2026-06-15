@@ -158,7 +158,7 @@
     </section>
 
   <!-- ================= CONTACT FORMS ================= -->
-<section class="section contact-forms-section compact-contact-forms">
+<section class="section contact-forms-section compact-contact-forms" id="contact-forms">
   <div class="container">
     <div class="section-heading centered">
       <p class="eyebrow">Send a Request</p>
@@ -193,12 +193,14 @@
 
       <div class="compact-form-shell">
         <!-- EQUIPMENT QUOTE FORM -->
-        <form
-          class="request-form compact-form-panel is-active"
-          data-form
-          data-form-panel="quote"
-          data-endpoint="https://formsubmit.co/ajax/copacificdistributors.gu@yahoo.com"
-        >
+       <form
+  class="request-form compact-form-panel is-active"
+  data-form
+  data-form-panel="quote"
+  action="https://formsubmit.co/ajax/copacificdistributors.gu@yahoo.com"
+  method="POST"
+  data-endpoint="https://formsubmit.co/ajax/copacificdistributors.gu@yahoo.com"
+>
           <input type="hidden" name="_subject" value="New Equipment Quote Request - Co Pacific Distributors" />
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_captcha" value="false" />
@@ -265,12 +267,15 @@
         </form>
 
         <!-- SERVICE REQUEST FORM -->
-        <form
-          class="request-form compact-form-panel"
-          data-form
-          data-form-panel="service"
-          data-endpoint="https://formsubmit.co/ajax/copacificdistributors.gu@yahoo.com"
-        >
+<form
+  class="request-form compact-form-panel"
+  id="service-request"
+  data-form
+  data-form-panel="service"
+  action="https://formsubmit.co/ajax/copacificdistributors.gu@yahoo.com"
+  method="POST"
+  data-endpoint="https://formsubmit.co/ajax/copacificdistributors.gu@yahoo.com"
+>
           <input type="hidden" name="_subject" value="New Service Request - Co Pacific Distributors" />
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_captcha" value="false" />
@@ -356,12 +361,14 @@
         </form>
 
         <!-- PARTS REQUEST FORM -->
-        <form
-          class="request-form compact-form-panel"
-          data-form
-          data-form-panel="parts"
-          data-endpoint="https://formsubmit.co/ajax/copacificdistributors.gu@yahoo.com"
-        >
+<form
+  class="request-form compact-form-panel"
+  data-form
+  data-form-panel="parts"
+  action="https://formsubmit.co/ajax/copacificdistributors.gu@yahoo.com"
+  method="POST"
+  data-endpoint="https://formsubmit.co/ajax/copacificdistributors.gu@yahoo.com"
+>
           <input type="hidden" name="_subject" value="New Parts Request - Co Pacific Distributors" />
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_captcha" value="false" />
@@ -587,6 +594,6 @@
 
   <!-- JS -->
   <script src="js/main.js"></script>
-  <script src="js/forms.js"></script>
+<script src="js/forms.js?v=formsubmit-2"></script>
 </body>
 </html>
