@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } catch (error) {
         showMessage(
           message,
-          "Sorry, something went wrong. Please call 671 922 8508 or email copacificdistributors_gu@yahoo.com.",
+          "Sorry, something went wrong. Please call 671 922 8508 or email copacificdistributors.gu@yahoo.com.",
           "error"
         );
       } finally {
